@@ -2,3 +2,7 @@ http://www.gnuplot.info/
 http://pyla.codeplex.com/
 http://python.org/
 http://www.minecraftforge.net/forum/index.php?topic=14048.0
+http://en.wikipedia.org/wiki/Matplotlib
+https://github.com/matplotlib/matplotlib/downloads
+http://matplotlib.org/index.html
+https://klassenresearch.orbs.com/Plotting+with+Python
