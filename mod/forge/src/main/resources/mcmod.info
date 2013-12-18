@@ -1,0 +1,16 @@
+[
+{
+  "modid": "SRPmod",
+  "name": "SRP Mod",
+  "description": "World generation mod for SRP.",
+  "version": "1.0",
+  "mcversion": "1.6.4",
+  "url": "",
+  "updateUrl": "",
+  "authors": ["Philip Hansen"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
