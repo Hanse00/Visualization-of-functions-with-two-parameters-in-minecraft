@@ -6,3 +6,4 @@ http://en.wikipedia.org/wiki/Matplotlib
 https://github.com/matplotlib/matplotlib/downloads
 http://matplotlib.org/index.html
 https://klassenresearch.orbs.com/Plotting+with+Python
+http://nbviewer.ipython.org/github/jrjohansson/scientific-python-lectures/blob/master/Lecture-4-Matplotlib.ipynb
