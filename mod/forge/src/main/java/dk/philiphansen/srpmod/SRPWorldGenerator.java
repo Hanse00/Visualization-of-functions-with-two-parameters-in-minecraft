@@ -14,7 +14,7 @@ public class SRPWorldGenerator implements IWorldGenerator {
 			for (int j = 1; j <= 16; j++) {
 				int coordinateX = chunkX*16 + i;
 				int coordinateZ = chunkZ*16 + j;
-				int coordinateY = (int)Math.round((Math.sin(Math.pow(coordinateX, 2)) + Math.sin(Math.pow(coordinateZ, 2))) * 32) + 64;
+				int coordinateY = (int)Math.round((Math.cos(Math.pow(coordinateX, 2)) + Math.sin(Math.pow(coordinateZ, 2))) * 32) + 64;
 				world.setBlock(coordinateX, coordinateY, coordinateZ, 5);
 			}
 		}
