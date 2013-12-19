@@ -10,6 +10,6 @@ X = np.arange(-np.pi, np.pi, 0.1)
 Y = np.arange(-np.pi, np.pi, 0.1)
 X, Y = np.meshgrid(X, Y)
 Z = np.cos(np.square(X)) + np.sin(np.square(Y))
-surf = ax.plot_surface(X, Y, Z, rstride=1, cstride=1, linewidth=0)
+surf = ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap=cm.coolwarm, linewidth=0)
 
 plt.show()
