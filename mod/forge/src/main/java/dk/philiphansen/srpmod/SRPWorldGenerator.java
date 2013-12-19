@@ -10,7 +10,7 @@ public class SRPWorldGenerator implements IWorldGenerator {
 
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
-		world.setBlock(chunkX*16 + random.nextInt(16), 100, chunkZ*16 + random.nextInt(16), 5);
+		world.setBlock(chunkX*16, 64, chunkZ*16 + 1, 5);
 	}
 
 }
