@@ -12,11 +12,10 @@ public class SRPWorldGenerator implements IWorldGenerator {
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
 		for (int i = 1; i <= 16; i++) {
 			for (int j = 1; j <= 16; j++) {
-				int coordinateX = chunkX + i;
-				int coordinateZ = chunkZ + j;
-				int coordinateY = (int)Math.round(Math.sin(Math.pow(coordinateX, 2)) + Math.sin(Math.pow(coordinateZ, 2)));
-				System.out.println(coordinateX + ", " + coordinateY + ", " + coordinateZ);
-				world.setBlock(coordinateX, (int)coordinateY, coordinateZ, 5);
+				int coordinateX = chunkX*16 + i;
+				int coordinateZ = chunkZ*16 + j;
+				int coordinateY = (int)Math.round((Math.sin(Math.pow(coordinateX, 2)) + Math.sin(Math.pow(coordinateZ, 2))) * 32) + 64;
+				world.setBlock(coordinateX, coordinateY, coordinateZ, 5);
 			}
 		}
 	}
