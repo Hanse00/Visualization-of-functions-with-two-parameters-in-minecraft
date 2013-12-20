@@ -3,3 +3,6 @@
 *.log
 *.gz
 *.toc
+
+#Ignore screenshots
+*.png
