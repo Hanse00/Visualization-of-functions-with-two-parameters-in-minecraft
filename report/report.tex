@@ -109,14 +109,26 @@
 		Denne funtion bruger \emph{XZ} planet som baggrund for at regne højden \emph{Y} ud,
 		p\aa \ samme m\aa de som \emph{Minecraft} g\o r det.
 
-		Det n\ae ste problem ved formlen der takles er at sinus og cosinus funktionerne b\ae gge giver et tal mellem \(-1\) og \(1\).
-		Alts\aa \ vil formlen give et resutat mellem \(-2\) og \(2\) afh\ae ngligt at inputtet, vi kan kun generere blokke mellem
-		\(0\) og \(256\).
+		Det n\ae ste problem ved formlen der takles er at sinus og cosinus funktionerne b\ae gge giver et tal mellem -1 og 1.
+		Alts\aa \ vil formlen give et resutat mellem -2 og 2 afh\ae ngligt at inputtet, vi kan kun generere blokke mellem
+		0 og 256.
 
 		Hvad jeg har valgt at g\o re ved detter at l\ae gge 64 til det endelige resultat af funktionen, hvilket g\o r at resultatet
-		nu variere mellem \(62\) og \(66\), et niveau vi kan placere blokke i uden problemer.
+		nu variere mellem 62 og 66, et niveau vi kan placere blokke i uden problemer.
 
 		\[y = (\cos (x^2) + \sin (z^2)) + 64\]
+
+		Den n\ae ste problemstilling der skal \ae ndres p\aa \ er at resultatet af vores funktion kun variere med 4, p\aa \
+		trods af at det er helt accepablet, fungere det ikke helt godt for \emph{Minecraft}, da vi normalt vil have at vores verden
+		variere mere end kun 4 blokke op og ned, det giver et meget flat landskab.
+
+		Derfor ganger vi resutatet af sinus og cosinus funktinerne med 32, som giver en variation af 128 blokke (32 * 2 op og 32 * 2 ned).
+		Koblet med \ae ndringen om at flytte hele kurven 64 blokke op, betyder det at kurven nu kan g\aa \ fra 0 til 128 i \emph{Y} aksen.
+
+		\[y = ((\cos (x^2) + \sin (z^2)) * 32) + 64\]
+
+		Da vi nu kender den ligning vi vil implementere i \emph{Minecraft}, vil vi forts\ae tte med den rent faktiske implementation af vores
+		funktion i spillet.
 	\subsection{Implementering}
 	\subsection{Vurdering}
 	\section{Perspektivering}
