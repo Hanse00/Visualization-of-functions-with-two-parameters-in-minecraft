@@ -24,6 +24,11 @@ breaklines=true,
 showstringspaces=false
 }
 
+\renewcommand{\chaptername}{Kapittel}
+\renewcommand{\figurename}{Figur}
+
+\usepackage{hyperref}
+
 \author{Philip Peder Hansen}
 \title{Visualisering af funktioner af to variable i Minecraft}
 
@@ -31,9 +36,75 @@ showstringspaces=false
 	\maketitle
 	\tableofcontents
 	\clearpage
-	\section{Funktioner af to variable}
-	\subsection{Afbildning af funktioner af to variable}
-	\section{Minecraft}
+	\chapter{Summary}
+		For my SRP I've worked with generation of world in \emph{Minecraft} based on functions with
+		two parameters. I've described what functions with two parameters are, how they can be illustrated,
+		and how they're connected to three dimensional graphs.
+
+		I've generated an illustration of the function
+
+		\[y = \cos (x^2) + \sin (z^2)\]
+
+		with \emph{python} and \emph{matplotlib}.
+
+		Furthermore I've implemented the same function into \emph{Minecraft's} world generation code,
+		and doccumented my work to do so.
+
+		I've come to the comclusion that functions with two parameters and a good basis for generating worlds,
+		but they're not optimal. For a good world generation a function with at least three parameters is needed,
+		allowing for a more randomized world generation, rather than a fixed pattern.
+	\chapter{Indledning}
+		I min SRP har jeg valt at arbejde med \emph{Minecraft}, og generering a verdner
+		deri ved hj\ae lp af funktioner med to parametre.
+
+		Jeg har skrevet om hvad funktioner med to parametre er, hvordan de kan visualiseres, og enda
+		lavet et visualiserings eksempel.
+
+		Jeg har eksperimenteret med at generere verdner i spillet ved hj\ae lp af funktionen
+
+		\[y = \cos (x^2) + \sin (z^2)\]
+
+		Og dokumenteret min fremgang for at n\aa \ der til.
+
+		Jeg er kommet frem til den konklusion at en nogenlunde verden sagtens kan genereres i \emph{Minecraft}
+		p\aa \ baggrund af denne funktion, men at en funktion med mindst tre parametre er n\o dvendig for at lave
+		en ordenlig verden.
+	\chapter{Funktioner af to variable}
+		Funktioner af to variable, er som navnet hentyder, funktioner der tager to variabler, eller input,
+		i stedet for det som vi bruger mest normalt, menlig funktioner af en variable.
+
+		Et eksempel p\aa \ en funktion af en variable kunne for eksemepel v\ae re
+
+		\[y = x * 2\]
+
+		En s\aa dan funktion tager en variable, alts\aa \ en ting der kan \ae ndre sig \emph{x},
+		og giver et resultat \emph{y}.
+
+		En funktion af to variable kunne derimod se ud som
+
+		\[z = x + y\]
+
+		Her findes der en \emph{z} v\ae rdi for hver to input v\ae rdier.
+	\section{Afbildning af funktioner af to variable}
+		Funktioner af to variable kan afbiledes p\aa \ flere forskellige m\aa der, for alle er dog ens at
+		der findes en parameter, der afh\ae nger af to andre.
+
+		Den simpleste m\aa de at afbilde en funktion af to variable er gennem et tre dimmensionelt
+		koordinatsystem, alts\aa et plan af \emph{x, y} v\ae rdier, og en tredje v\ae rdi, \emph{z},
+		der er produktet af de to andre.
+
+		Der findes dog andre m\aa der at illustrere funktioner af to parametre.
+		For eksempel kan man farve et punk basseret p\aa punktetes v\ae rdi.
+
+		Herunder ses en funktion af to parametre
+
+		\[y = \cos (x^2) + \sin (z^2)\]
+
+		Denne funktion kan tegnes som en v\ae rdi p\aa \ en vertical akse, baseret p\aa \ et punkt
+		i det horizontale plan.
+		
+		Se Appendix~\ref{appendixB} for funktionen tegnet med \emph{matplotlib} i \emph{python}.
+	\chapter{Minecraft}
 		\emph{Minecraft} er et videospil lavel af \emph{Markus "Notch" Persson}.
 		Spillet er en blanding mellem et eventyr overlevelses spil, og et kreativt spil der g\aa r ud p\aa \ at bygge verdener.
 
@@ -59,7 +130,7 @@ showstringspaces=false
 		Derudover genereres blokkene baseret p\aa \ nogle algorytmer, der resultere i et m\o nster der til nogen grad minder
 		og den virkelige verden. Tr\ae r genereres i n\ae rheden af hinanden, i skove, og ikke midt ude i havene.
 		\O rkner og tundra findes generelt ikke umidelbart i n\ae rheden af hinanden, og floder l\o ber ofte gennem regnskove. 
-	\subsection{Generering af verdner}
+	\section{Generering af verdner}
 		Algorytmerne der bruges til at generere verdener i\emph{Minecraft} er en del mere komplicerede end en det simple eksemepel p\aa \ den funktion
 		af to parametre vi har kigget p\aa . Ud over \emph{X} og \emph{Z} koordinated bruger minecraft ogs\aa \ noget som kaldes et seed til at generere
 		verdener, de genereres alts\aa \ ud fra en mere kompliceret funktion af tre parametre.
@@ -92,7 +163,7 @@ showstringspaces=false
 
 		Ud fra dette seed og generations algorytmerne, bestemmer \emph{Minecraft} hvilken blok der skal placeres p\aa \ hvert punkt
 		i verdenen.
-	\subsection{Planlægning}
+	\section{Planlægning}
 		For at implementere vores egen kode i \emph{Minecraft}, og generere en verden baseret ud fra den f\o lgene funktion, er der
 		nogle overvejelser vi f\o rst m\aa \ lave om hvordan dette skal forg\aa .
 
@@ -105,14 +176,13 @@ showstringspaces=false
 		Heldigvis findes der en uofficiel API til \emph{Minecraft}, der g\o r det muligt at skrive noget kode som en separat file, som bliver k\o rt
 		n\aa r \emph{Minecraft} g\o r det, denne API kaldes \emph{Minecraft Forge}.
 
-		\subsubsection{Forge}
+		\subsection{Forge}
 		\emph{Minecraft Forge} eller bare \emph{Forge} fugere p\aa \ den m\aa de at programmet som i sig selv \ae ndre p\aa \ noget af
 		kilde koden til \emph{Minecraft}, de \ae ndringer \aa bner op for at andre filer, kendt som \emph{mods}, kan \ae ndre p\aa
 		v\ae rdier i spillet, uden direkte at skulle \ae ndre p\aa \ koden. Dette er is\ae r vigtigt da to mods der ville pr\o ve at overskrive
 		to forskellige ting i den samme fil, ellers ville overskrive hinandens \ae ndringer, som ville resultere i at kun et mod der havde noget
 		at g\o re med en specifik fil ville kunne virke p\aa \ samme tid.
-
-		\subsubsection{Ligning}
+		\subsection{Ligning}
 		Da vi nu ved at vi kan \ae ndre p\aa \ generations koden i spillet, kan vi kigge tilbage p\aa hvad det egentlig er vi vil implementere.
 
 		Som tidligere n\ae nt best\aa r \emph{Minecraft} verdener af 1 \(m^3\) blokke i et tre dimensionels koordinatsystem. Koordinatsystemet
@@ -148,8 +218,8 @@ showstringspaces=false
 
 		Da vi nu kender den ligning vi vil implementere i \emph{Minecraft}, vil vi forts\ae tte med den rent faktiske implementation af vores
 		funktion i spillet.
-	\subsection{Implementering}
-		\subsubsection{Iteration 1}		
+	\section{Implementering}
+		\subsection{Iteration 1}		
 			Det f\o rste trin i at implementere vores generation ind i spillet er at definere et mod.
 			Et mod har to hoved komponenter der kræves for at spillet kan genkende det, og k\o rer det.
 
@@ -188,13 +258,8 @@ public class SRPMod
 ]
 \end{lstlisting}
 			\emph{mcmod.info} er en fil der str\ae ng taget ikke kr\ae ves, men den giver spillet en del informationer om vores \emph{mod}, som vises i spillet.
-			Denne information er der mest af alt for at hj\ae lpe spilleren med at finde ud af hvad der er installeret.
-
-			\begin{wrapfigure}{r}{0.5\textwidth}
-				\includegraphics[keepaspectratio = true, width = 0.5\textwidth]{screenshot3}
-				\caption{mcmod.info}
-			\end{wrapfigure}
-		\subsubsection{Iteration 2}
+			Denne information er der mest af alt for at hj\ae lpe spilleren med at finde ud af hvad der er installeret. Se Appendix~\ref{appendixE} for visning af \emph{mcmod.info} i spillet.
+		\subsection{Iteration 2}
 			Da vi nu har et fungerende mod, der kan k\o rers i spillet, kan vi forts\ae tte med implementeringen af den egentlige funktionalitet.
 
 			For at holde styr p\aa \ koden, laver vi f\o rst en ny fil til at holde vores generations kode, den kaldes \emph{SRPWorldGenerator.java},
@@ -235,16 +300,10 @@ public class SRPWorldGenerator implements IWorldGenerator {
 			Da funktionen \emph{generate} kaldes med \emph{X, Y} v\ae rdien af den chunk der genereres, kan
 			denne ganges med 16 (da enhver chunk er \(16 * 16\) blokke, dette giver hj\o rnet p\aa \ den givne chunk.
 			Ved derefter at ligge et random tal mellem 0 og 16 til, f\aa r vi en blok med \emph{Y} koordinated 100, og et random \emph{X, Y}
-			koordinat i hver chunk.
-
-			\begin{wrapfigure}{r}{0.5\textwidth}
-				\includegraphics[keepaspectratio = true, width = 0.5\textwidth]{screenshot4}
-				\caption{F\o rste generations eksperiment}
-			\end{wrapfigure}
+			koordinat i hver chunk. Se Appendix~\ref{appendixF}.
 
 			Med et stabilt grundlag for at generere blokke, forts\ae tter vi mod at generere den forskrevne funktion.
-
-		\subsubsection{Iteration 3}
+		\subsection{Iteration 3}
 			Det n\ae ste skridt i mod at generere vores funktion er at placere en blok for hver punkt, i stedet for at placere en
 			for hver chunk, da vores funktion vil kr\ae ve at vi udregner en \emph{Y} v\ae rdi for hver punkt i \emph{XZ} planet.
 
@@ -259,19 +318,14 @@ for (int i = 1; i <= 16; i++) {
 \end{lstlisting}
 
 			Med denne \ae ndring i koden, bliver alle punkter med \emph{Y} koordinated 64 sat til at v\ae re et stykke tr\ae .
-
-			\begin{wrapfigure}{r}{0.5\textwidth}
-				\includegraphics[keepaspectratio = true, width = 0.5\textwidth]{screenshot5}
-				\caption{Solid tr\ae \ verden}
-			\end{wrapfigure}
-
-		\subsubsection{Iteration 4}
+			Dette kan ses i Appendix~\ref{appendixG}.
+		\subsection{Iteration 4}
 			Efter at have implementeret l\o kker i generationskoden, er det n\ae ste trin at lave en mere variable overflade,
 			til det form\aa l har jeg valgt at generere en cosinus kurve langs \emph{X} aksen, der kun bruger den ene parameter.
 
 			Dette burde give en stor \emph{b\o lge}, da kurven ikke \ae ndre sig langs \emph{Z} aksen.
 
-\begin{lstlisting}[label=SRPWorldGenerator2,caption=SRPWorldGenerator.java]
+\begin{lstlisting}[label=SRPWorldGenerator3,caption=SRPWorldGenerator.java]
 for (int i = 1; i <= 16; i++) {
     for (int j = 1; j <= 16; j++) {
         int coordinateX = chunkX*16 + i;
@@ -287,12 +341,8 @@ for (int i = 1; i <= 16; i++) {
 			eller lige over 3 blokke over \emph{X} akesen. Dette resultere i noget der ikke s\aa \ meget ligner en kurve, som en par punkter underligt
 			forskudt.
 
-			\begin{wrapfigure}{r}{0.5\textwidth}
-				\includegraphics[keepaspectratio = true, width = 0.5\textwidth]{screenshot6}
-				\caption{Cosinus "b\o lge"}
-			\end{wrapfigure}
-
-		\subsubsection{Iteration 5}
+			Screenshot af denne funktion kan ses i Appendix~\ref{appendixH}.
+		\subsection{Iteration 5}
 			For at komme frem til noget der ligner en rent faktisk b\o lge m\aa \ vi alts\aa \ give funktionen en periode der er lidt st\o rrer
 			end \(2 * \pi \), dette gøres ved at gange \emph{X} koordinated med en konstant der g\o r det mindre, f\o r det bliver fodret
 			ind i funktionen.
@@ -300,25 +350,15 @@ for (int i = 1; i <= 16; i++) {
 			En konstant som 0.05 giver en periode p\aa \ \( \pi \over 0.05\) eller 125 blokke, som giver noget der syneligt
 			minder om en kurve.
 
-			\begin{wrapfigure}{r}{0.5\textwidth}
-				\includegraphics[keepaspectratio = true, width = 0.5\textwidth]{screenshot7}
-				\caption{Synlig cosinus kurve}
-			\end{wrapfigure}
-
-		 \subsubsection{Iteration 6}
+			Se Appendix~\ref{appendixI} for visning af denne funktion.
+		 \subsection{Iteration 6}
 			Med en fungerende cosinus kurve, er det n\ae stre skridt at lave en funktion af to parametre.
 			Som test har jeg valgt at generere funktionen
 
 			\[y = ((\cos (0.05 * x) + \sin (0.05 * z)) * 32) + 64\]
 
-			\begin{wrapfigure}{r}{0.5\textwidth}
-				\includegraphics[keepaspectratio = true, width = 0.5\textwidth]{screenshot8}
-				\caption{Sinus + cosinus kurve}
-			\end{wrapfigure}
-
-			Resultatet er et flot b\o lgene landskab, der begynder at ligne noget der kunne brugest at at spille i.
-
-		\subsubsection{Iteration 7}
+			Resultatet er et flot b\o lgene landskab som kan ses i Appendix~\ref{appendixJ}, der begynder at ligne noget der kunne brugest at at spille i.
+		\subsection{Iteration 7}
 			Den syvne og sidste iteration er implementering af den forskrevne funktion 
 
 			\[y = ((\cos (0.025 * x^2) + \sin (0.025 * z^2)) * 32) + 64\]
@@ -362,15 +402,7 @@ public class SRPWorldGenerator implements IWorldGenerator {
 
 			P\aa trods af at det m\aa ske kr\ae ver lidt kreativitet at se det, er det den samme funktion som blev
 			plottet med \emph{python} og \emph{matplotlib}
-
-			\begin{figure}[h]
-				\begin{center}
-					\includegraphics[keepaspectratio = true, scale = 0.5]{figure1}
-					\caption{\emph{Python} visuaisering}
- 				\end{center}
-			\end{figure}
-
-	\subsection{Vurdering}
+	\section{Vurdering}
 		P\aa \ bagrund af mit arbejde med implementationen af denne funktion af to variabler, vil jeg vurdere
 		at det er en god start, til m\aa der at generere verdner p\aa \ , men i sig selv er en funktion med to parametre ikke nok.
 
@@ -380,7 +412,7 @@ public class SRPWorldGenerator implements IWorldGenerator {
 
 		Det ville v\ae re problematisks hvis spilleren kunne udregne hvor i jorden diamnter vil findes, og hvor skatte kan findes, ud fra
 		koordinaterne p\aa \ et punkt alene.
-	\section{Perspektivering}
+	\chapter{Perspektivering}
 		Basering af hele verdner p\aa \ bagrund af en relativt simpel ligning af denne art er for simplet, men
 		der er god mulighed for brug af ligner af denne art i \emph{Minecraft} alligevel.
 
@@ -390,4 +422,186 @@ public class SRPWorldGenerator implements IWorldGenerator {
 		Man kunne godt forstille sig at have en st\o rre algorytme der styrer hele generationen af verdenen,
 		som kalder en funktion med et punk p\aa \ hvilket et hus skal genereres, hvorever en funktion af
 		to parametre bruges til at generere selve strukturen.
+	\chapter{Kilder}
+		\begin{itemize}
+			\item \url{http://matplotlib.org/examples/mplot3d/surface3d_demo.html}
+			
+			Som basis for plot.py, brugt til at l\ae re hvordan man laver 3d grafer i matplotlib.
+
+			\item \url{http://www.minecraftforge.net/wiki/Adding_World_Generation}
+
+			Brugt som baggrund for verden generering
+
+			\item Matematik A - Forberedelsesmateriale - Mandag den 27. maj 2013, side 7 og 8
+			
+			Til forst\aa else og beskrivelse af funktioner af to parametre
+		\end{itemize}
+	\appendix
+		\chapter{plot.py}
+		\label{appendixA}
+			\emph{plot.py} er funktionen jeg har brugt til at vise funktionen
+
+			\[y = \cos (x^2) + \sin (z^2)\]
+
+			som en tre dimmensionel graf
+
+\begin{lstlisting}[label=plot.pyl,caption=plot.py]
+from mpl_toolkits.mplot3d import Axes3D
+from matplotlib import cm
+import matplotlib.pyplot as plt
+import numpy as np
+
+fig = plt.figure()
+ax = fig.gca(projection='3d')
+
+X = np.arange(-np.pi, np.pi, 0.1)
+Y = np.arange(-np.pi, np.pi, 0.1)
+X, Y = np.meshgrid(X, Y)
+Z = np.cos(np.square(X)) + np.sin(np.square(Y))
+
+surf = ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap=cm.coolwarm, linewidth=0)
+
+plt.show()
+\end{lstlisting}
+		\chapter{plot1.png}
+		\label{appendixB}
+			\begin{figure}
+				\begin{center}
+				\includegraphics[keepaspectratio = true, scale = 0.35]{figure1}
+				\end{center}
+			\end{figure}
+		\chapter{screenshot1.png}
+		\label{appendixC}
+			\begin{figure}
+				\begin{center}
+				\includegraphics[keepaspectratio = true, scale = 0.15]{screenshot1}
+				\end{center}
+			\end{figure}
+		\chapter{screenshot2.png}
+		\label{appendixD}
+			\begin{figure}
+				\begin{center}
+				\includegraphics[keepaspectratio = true, scale = 0.3]{screenshot2}
+				\end{center}
+			\end{figure}
+		\chapter{screenshot3.png}
+		\label{appendixE}
+			\begin{figure}
+				\begin{center}
+				\includegraphics[keepaspectratio = true, scale = 0.3]{screenshot3}
+				\end{center}
+			\end{figure}
+		\chapter{screenshot4.png}
+		\label{appendixF}
+			\begin{figure}
+				\begin{center}
+				\includegraphics[keepaspectratio = true, scale = 0.3]{screenshot4}
+				\end{center}
+			\end{figure}
+		\chapter{screenshot5.png}
+		\label{appendixG}
+			\begin{figure}
+				\begin{center}
+				\includegraphics[keepaspectratio = true, scale = 0.3]{screenshot5}
+				\end{center}
+			\end{figure}
+		\chapter{screenshot6.png}
+		\label{appendixH}
+			\begin{figure}
+				\begin{center}
+				\includegraphics[keepaspectratio = true, scale = 0.15]{screenshot6}
+				\end{center}
+			\end{figure}
+		\chapter{screenshot7.png}
+		\label{appendixI}
+			\begin{figure}
+				\begin{center}
+				\includegraphics[keepaspectratio = true, scale = 0.15]{screenshot7}
+				\end{center}
+			\end{figure}
+		\chapter{screenshot8.png}
+		\label{appendixJ}
+			\begin{figure}
+				\begin{center}
+				\includegraphics[keepaspectratio = true, scale = 0.15]{screenshot8}
+				\end{center}
+			\end{figure}
+		\chapter{screenshot9.png}
+		\label{appendixK}
+			\begin{figure}
+				\begin{center}
+				\includegraphics[keepaspectratio = true, scale = 0.15]{screenshot9}
+				\end{center}
+			\end{figure}
+		\chapter{mcmod.info}
+		\label{appendixL}
+\begin{lstlisting}[label=mcmod.info,caption=mcmod.info]
+[
+{
+  "modid": "SRPmod",
+  "name": "SRP Mod",
+  "description": "World generation mod for SRP.",
+  "version": "1.0",
+  "mcversion": "1.6.4",
+  "url": "",
+  "updateUrl": "",
+  "authors": ["Philip Hansen"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
+\end{lstlisting}
+		\chapter{SRPMod.java}
+		\label{appendixM}
+\begin{lstlisting}[label=SRPMod.java,caption=SRPMod.java]
+package dk.philiphansen.srpmod;
+
+import net.minecraft.block.Block;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
+
+@Mod(modid = SRPMod.MODID, version = SRPMod.VERSION)
+public class SRPMod
+{
+    public static final String MODID = "SRPmod";
+    public static final String VERSION = "1.0";
+    public static SRPWorldGenerator worldGen = new SRPWorldGenerator();
+    
+    @EventHandler
+    public void init(FMLInitializationEvent event)
+    {
+		GameRegistry.registerWorldGenerator(worldGen);
+    }
+}
+\end{lstlisting}
+		\chapter{SRPWorldGenerator.java}
+		\label{appendixN}
+\begin{lstlisting}[label=SRPWorldGenerator.java,caption=SRPWorldGenerator.java]
+package dk.philiphansen.srpmod;
+
+import java.util.Random;
+
+import net.minecraft.world.World;
+import net.minecraft.world.chunk.IChunkProvider;
+import cpw.mods.fml.common.IWorldGenerator;
+
+public class SRPWorldGenerator implements IWorldGenerator {
+
+    @Override
+    public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
+        for (int i = 1; i <= 16; i++) {
+            for (int j = 1; j <= 16; j++) {
+                int coordinateX = chunkX*16 + i;
+                int coordinateZ = chunkZ*16 + j;
+                int coordinateY = (int)Math.round((Math.cos(Math.pow(0.025 * coordinateX, 2)) + Math.sin(Math.pow(0.025 * coordinateZ, 2))) * 32) + 64;
+                world.setBlock(coordinateX, coordinateY, coordinateZ, 5);			
+            }
+        }
+    }
+}
+\end{lstlisting}
 \end{document}
