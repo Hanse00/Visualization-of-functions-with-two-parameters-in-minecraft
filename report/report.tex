@@ -306,8 +306,88 @@ for (int i = 1; i <= 16; i++) {
 			\end{wrapfigure}
 
 		 \subsubsection{Iteration 6}
-			Med en fungerende cosinus kurve, er det n\ae stre skridt at lave en funktion af to parametre
+			Med en fungerende cosinus kurve, er det n\ae stre skridt at lave en funktion af to parametre.
+			Som test har jeg valgt at generere funktionen
+
+			\[y = ((\cos (0.05 * x) + \sin (0.05 * z)) * 32) + 64\]
+
+			\begin{wrapfigure}{r}{0.5\textwidth}
+				\includegraphics[keepaspectratio = true, width = 0.5\textwidth]{screenshot8}
+				\caption{Sinus + cosinus kurve}
+			\end{wrapfigure}
+
+			Resultatet er et flot b\o lgene landskab, der begynder at ligne noget der kunne brugest at at spille i.
+
+		\subsubsection{Iteration 7}
+			Den syvne og sidste iteration er implementering af den forskrevne funktion 
+
+			\[y = ((\cos (0.025 * x^2) + \sin (0.025 * z^2)) * 32) + 64\]
+
+			Med den \ae ndring at konstanten 0.05 er blevet \ae ndret til 0.025, da vore funktion ogs\aa \ er en andengrands funktion,
+			og derfor har endnu st\o rrer udslag end de tidligere funktioner.
+
+			Efter implementeringen af koden til denne funktion i vores \emph{SRPWorldGenerator.java} fil, er koden til det endelige resultat som
+			f\o lger
+
+\begin{lstlisting}[label=SRPWorldGenerator-final,caption=SRPWorldGenerator.java]
+package dk.philiphansen.srpmod;
+
+import java.util.Random;
+
+import net.minecraft.world.World;
+import net.minecraft.world.chunk.IChunkProvider;
+import cpw.mods.fml.common.IWorldGenerator;
+
+public class SRPWorldGenerator implements IWorldGenerator {
+    @Override
+    public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
+        for (int i = 1; i <= 16; i++) {
+            for (int j = 1; j <= 16; j++) {
+                int coordinateX = chunkX*16 + i;
+                int coordinateZ = chunkZ*16 + j;
+                int coordinateY = (int)Math.round((Math.cos(Math.pow(0.01 * coordinateX, 2)) + Math.sin(Math.pow(0.01 * coordinateZ, 2))) * 32) + 64;
+                world.setBlock(coordinateX, coordinateY, coordinateZ, 5);			
+            }
+        }
+    }
+}
+\end{lstlisting}
+
+			Det endelige visuelle resultat kan ses her:
+
+			\begin{figure}[h]
+				\includegraphics[keepaspectratio = true, scale = 0.2]{screenshot9}
+				\caption{\(y = ((\cos (0.025 * x^2) + \sin (0.025 * z^2)) * 32) + 64\)}
+			\end{figure}
+
+			P\aa trods af at det m\aa ske kr\ae ver lidt kreativitet at se det, er det den samme funktion som blev
+			plottet med \emph{python} og \emph{matplotlib}
+
+			\begin{figure}[h]
+				\begin{center}
+					\includegraphics[keepaspectratio = true, scale = 0.5]{figure1}
+					\caption{\emph{Python} visuaisering}
+ 				\end{center}
+			\end{figure}
 
 	\subsection{Vurdering}
+		P\aa \ bagrund af mit arbejde med implementationen af denne funktion af to variabler, vil jeg vurdere
+		at det er en god start, til m\aa der at generere verdner p\aa \ , men i sig selv er en funktion med to parametre ikke nok.
+
+		Som tidligere beskrevet, er en funktion med tre eller flere parametre n\o dvendig, i det mindste for at g\o re spillet interesant.
+		En funktion med kun to parametre \emph{X, Z} vil altid generere p\aa \ den samme m\aa de, hvilket g\o r landskabet
+		meget forudsigeligt.
+
+		Det ville v\ae re problematisks hvis spilleren kunne udregne hvor i jorden diamnter vil findes, og hvor skatte kan findes, ud fra
+		koordinaterne p\aa \ et punkt alene.
 	\section{Perspektivering}
+		Basering af hele verdner p\aa \ bagrund af en relativt simpel ligning af denne art er for simplet, men
+		der er god mulighed for brug af ligner af denne art i \emph{Minecraft} alligevel.
+
+		Mindre genererede strukture, som huse, s\o er, farme og lignende kan sagtens genereres p\aa \ baggrund af
+		mindre komplicerede ligninger, som ikke har behov for mere and to koordinater.
+
+		Man kunne godt forstille sig at have en st\o rre algorytme der styrer hele generationen af verdenen,
+		som kalder en funktion med et punk p\aa \ hvilket et hus skal genereres, hvorever en funktion af
+		to parametre bruges til at generere selve strukturen.
 \end{document}
