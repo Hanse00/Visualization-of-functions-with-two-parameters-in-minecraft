@@ -104,7 +104,19 @@
 		da coordinat systemet i \emph{Minecraft} bryger \emph{Y} aksen som h\o jde, i stedet for \emph{Z} aksen som bruges
 		i vores ligning. Den nye funktio ser alts\aa \ s\aa \ ledes ud
 
-		\[y = \cos (x^2) + \sin (z^2)\]		
+		\[y = \cos (x^2) + \sin (z^2)\]
+
+		Denne funtion bruger \emph{XZ} planet som baggrund for at regne højden \emph{Y} ud,
+		p\aa \ samme m\aa de som \emph{Minecraft} g\o r det.
+
+		Det n\ae ste problem ved formlen der takles er at sinus og cosinus funktionerne b\ae gge giver et tal mellem \(-1\) og \(1\).
+		Alts\aa \ vil formlen give et resutat mellem \(-2\) og \(2\) afh\ae ngligt at inputtet, vi kan kun generere blokke mellem
+		\(0\) og \(256\).
+
+		Hvad jeg har valgt at g\o re ved detter at l\ae gge 64 til det endelige resultat af funktionen, hvilket g\o r at resultatet
+		nu variere mellem \(62\) og \(66\), et niveau vi kan placere blokke i uden problemer.
+
+		\[y = (\cos (x^2) + \sin (z^2)) + 64\]
 	\subsection{Implementering}
 	\subsection{Vurdering}
 	\section{Perspektivering}
