@@ -41,8 +41,8 @@
 		og den virkelige verden. Tr\ae r genereres i n\ae rheden af hinanden, i skove, og ikke midt ude i havene.
 		\O rkner og tundra findes generelt ikke umidelbart i n\ae rheden af hinanden, og floder l\o ber ofte gennem regnskove. 
 	\subsection{Generering af verdner}
-		Algorytmerne der bruges til at generere verdener i\emph{ Minecraft]} er en del mere komplicerede end en det simple eksemepel p\aa \ den funktion
-		af to parametre vi har kigget p\aa . Ud over \emph{X} og \emph{Z} koordinated bruger minecraft også noget som kaldes et seed til at generere
+		Algorytmerne der bruges til at generere verdener i\emph{Minecraft} er en del mere komplicerede end en det simple eksemepel p\aa \ den funktion
+		af to parametre vi har kigget p\aa . Ud over \emph{X} og \emph{Z} koordinated bruger minecraft ogs\aa \ noget som kaldes et seed til at generere
 		verdener, de genereres alts\aa \ ud fra en mere kompliceret funktion af tre parametre.
 		
 		\begin{wrapfigure}{r}{0.5\textwidth}
@@ -70,7 +70,14 @@
 
 		P\aa \ samme m\aa de bruger \emph{Minecraft} dette \emph{seed} i generations koden til at skabe verdener der er unikke, p\aa \ trods
 		af at de alle er genererede fra den samme kode.
+
+		Ud fra dette seed og generations algorytmerne, bestemmer \emph{Minecraft} hvilken blok der skal placeres p\aa \ hvert punkt
+		i verdenen.
 	\subsection{Planlægning}
+		For at implementere vores egen kode i \emph{Minecraft}, og generere en verden baseret ud fra den f\o lgene funktion, er der
+		nogle overvejelser vi f\o rst m\aa \ lave om hvordan dette skal forg\aa .
+
+		\[z = \cos (x^2) + \sin (y^2)\]
 	\subsection{Implementering}
 	\subsection{Vurdering}
 	\section{Perspektivering}
