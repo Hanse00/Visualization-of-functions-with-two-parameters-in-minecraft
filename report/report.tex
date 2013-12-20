@@ -14,6 +14,16 @@
 \DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
 \captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
 
+\lstset{
+basicstyle=\small\sffamily,
+numbers=left,
+numberstyle=\tiny,
+frame=tb,
+columns=fullflexible,
+breaklines=true,
+showstringspaces=false
+}
+
 \author{Philip Peder Hansen}
 \title{Visualisering af funktioner af to variable i Minecraft}
 
@@ -139,8 +149,9 @@
 		Da vi nu kender den ligning vi vil implementere i \emph{Minecraft}, vil vi forts\ae tte med den rent faktiske implementation af vores
 		funktion i spillet.
 	\subsection{Implementering}
-		Det f\o rste trin i at implementere vores generation ind i spillet er at definere et mod.
-		Et mod har to hoved komponenter der kræves for at spillet kan genkende det, og k\o rer det.
+		\subsubsection{Iteration 1}		
+			Det f\o rste trin i at implementere vores generation ind i spillet er at definere et mod.
+			Et mod har to hoved komponenter der kræves for at spillet kan genkende det, og k\o rer det.
 
 \begin{lstlisting}[label=srpmod.java,caption=SRPMod.java]
 package dk.philiphansen.srpmod;
@@ -155,8 +166,8 @@ public class SRPMod
     public static final String VERSION = "1.0";
 }
 \end{lstlisting}
-	Denne fil findes af minecraft under opstart, og k\o rers da den har \emph{@mod} annotationen.
-	Filen g\o r ikke noget da der ikke rent faktisk er noget kode at eksekvere, bare en fil der definerer at det \emph{mod} findes.
+			Denne fil findes af minecraft under opstart, og k\o rers da den har \emph{@mod} annotationen.
+			Filen g\o r ikke noget da der ikke rent faktisk er noget kode at eksekvere, bare en fil der definerer at det \emph{mod} findes.
 
 \begin{lstlisting}[label=mcmod.info,caption=mcmod.info]
 [
@@ -176,8 +187,51 @@ public class SRPMod
 }
 ]
 \end{lstlisting}
-	\emph{mcmod.info} er en fil der str\ae ng taget ikke kr\ae ves, men den giver spillet en del informationer om vores \emph{mod}, som vises i spillet.
-	Denne information er der mest af alt for at hj\ae lpe spilleren med at finde ud af hvad der er installeret.
+			\emph{mcmod.info} er en fil der str\ae ng taget ikke kr\ae ves, men den giver spillet en del informationer om vores \emph{mod}, som vises i spillet.
+			Denne information er der mest af alt for at hj\ae lpe spilleren med at finde ud af hvad der er installeret.
+
+			\begin{wrapfigure}{r}{0.5\textwidth}
+				\includegraphics[keepaspectratio = true, width = 0.5\textwidth]{screenshot3}
+				\caption{mcmod.info}
+			\end{wrapfigure}
+		\subsubsection{Iteration 2}
+			Da vi nu har et fungerende mod, der kan k\o rers i spillet, kan vi forts\ae tte med implementeringen af den egentlige funktionalitet.
+
+			For at holde styr p\aa \ koden, laver vi f\o rst en ny fil til at holde vores generations kode, den kaldes \emph{SRPWorldGenerator.java},
+			derefter skal denne fil registeres som en generator, via \emph{forge}, det g\o res med f\o lgene kode
+
+\begin{lstlisting}[label=SRPMod2,caption=SRPMod.java]
+    public static SRPWorldGenerator worldGen = new SRPWorldGenerator();
+    
+    @EventHandler
+    public void init(FMLInitializationEvent event)
+    {
+        GameRegistry.registerWorldGenerator(worldGen);
+    }
+}
+\end{lstlisting}
+	
+			For at teste at det virker som \o nsket, har jeg kopieret noget test kode, der generere tr\ae \ blokke,
+			rund omkring i verdenen.
+
+\begin{lstlisting}[label=SRPWorldGenerator,caption=SRPWorldGenerator.java]
+package dk.philiphansen.srpmod;
+
+import java.util.Random;
+
+import net.minecraft.world.World;
+import net.minecraft.world.chunk.IChunkProvider;
+import cpw.mods.fml.common.IWorldGenerator;
+
+public class SRPWorldGenerator implements IWorldGenerator {
+
+    @Override
+    public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
+        world.setBlock(chunkX*16 + random.nextInt(16), 100, chunkZ*16 + random.nextInt(16), 5);
+    }
+}
+\end{lstlisting}
+
 	\subsection{Vurdering}
 	\section{Perspektivering}
 \end{document}
