@@ -77,7 +77,7 @@
 		For at implementere vores egen kode i \emph{Minecraft}, og generere en verden baseret ud fra den f\o lgene funktion, er der
 		nogle overvejelser vi f\o rst m\aa \ lave om hvordan dette skal forg\aa .
 
-		\[z = \cos (x^2) + \sin (y^2)\]
+		
 
 		Den f\o rste, og m\aa ske vigtigste, overvejelse jeg har gjort min i forhold til at implementere denne formel i \emph{Minecraft}
 		er hvordan koden skal indkorporeres i spillet.
@@ -93,7 +93,18 @@
 		to forskellige ting i den samme fil, ellers ville overskrive hinandens \ae ndringer, som ville resultere i at kun et mod der havde noget
 		at g\o re med en specifik fil ville kunne virke p\aa \ samme tid.
 
+		\subsubsection{Ligning}
 		Da vi nu ved at vi kan \ae ndre p\aa \ generations koden i spillet, kan vi kigge tilbage p\aa hvad det egentlig er vi vil implementere.
+
+		Som tidligere n\ae nt best\aa r \emph{Minecraft} verdener af 1 \(m^3\) blokke i et tre dimensionels koordinatsystem. Koordinatsystemet
+		er uendeligt bredt og langt, men har en begr\ae nset h\o jde p\aa \ 256 blokke.
+		Vores funktion kr\ae ver en del tilpasninger for at blive illustreret vel i dette koordinatsystem.
+
+		Den f\o rste \ae ndring der skal g\o res ved funktinen er at bytte om p\aa \ nogle akser,
+		da coordinat systemet i \emph{Minecraft} bryger \emph{Y} aksen som h\o jde, i stedet for \emph{Z} aksen som bruges
+		i vores ligning. Den nye funktio ser alts\aa \ s\aa \ ledes ud
+
+		\[y = \cos (x^2) + \sin (z^2)\]		
 	\subsection{Implementering}
 	\subsection{Vurdering}
 	\section{Perspektivering}
