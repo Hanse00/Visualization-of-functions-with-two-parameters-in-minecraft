@@ -24,7 +24,7 @@ breaklines=true,
 showstringspaces=false
 }
 
-\renewcommand{\chaptername}{Kapittel}
+\renewcommand{\chaptername}{Kapitel}
 \renewcommand{\figurename}{Figur}
 
 \usepackage{hyperref}
@@ -48,19 +48,19 @@ showstringspaces=false
 		with \emph{python} and \emph{matplotlib}.
 
 		Furthermore I've implemented the same function into \emph{Minecraft's} world generation code,
-		and doccumented my work to do so.
+		and documented my work to do so.
 
-		I've come to the comclusion that functions with two parameters and a good basis for generating worlds,
+		I've come to the conclusion that functions with two parameters and a good basis for generating worlds,
 		but they're not optimal. For a good world generation a function with at least three parameters is needed,
 		allowing for a more randomized world generation, rather than a fixed pattern.
 	\chapter{Indledning}
-		I min SRP har jeg valt at arbejde med \emph{Minecraft}, og generering a verdner
+		I min SRP har jeg valt at arbejde med \emph{Minecraft}, og generering a verdener
 		deri ved hj\ae lp af funktioner med to parametre.
 
-		Jeg har skrevet om hvad funktioner med to parametre er, hvordan de kan visualiseres, og enda
+		Jeg har skrevet om hvad funktioner med to parametre er, hvordan de kan visualiseres, og endda
 		lavet et visualiserings eksempel.
 
-		Jeg har eksperimenteret med at generere verdner i spillet ved hj\ae lp af funktionen
+		Jeg har eksperimenteret med at generere verdener i spillet ved hj\ae lp af funktionen
 
 		\[y = \cos (x^2) + \sin (z^2)\]
 
@@ -71,9 +71,9 @@ showstringspaces=false
 		en ordenlig verden.
 	\chapter{Funktioner af to variable}
 		Funktioner af to variable, er som navnet hentyder, funktioner der tager to variabler, eller input,
-		i stedet for det som vi bruger mest normalt, menlig funktioner af en variable.
+		i stedet for det som vi bruger mest normalt, nemlig funktioner af en variable.
 
-		Et eksempel p\aa \ en funktion af en variable kunne for eksemepel v\ae re
+		Et eksempel p\aa \ en funktion af en variable kunne v\ae re
 
 		\[y = x * 2\]
 
@@ -86,53 +86,53 @@ showstringspaces=false
 
 		Her findes der en \emph{z} v\ae rdi for hver to input v\ae rdier.
 	\section{Afbildning af funktioner af to variable}
-		Funktioner af to variable kan afbiledes p\aa \ flere forskellige m\aa der, for alle er dog ens at
+		Funktioner af to variable kan afbildes p\aa \ flere forskellige m\aa der, for alle er dog ens at
 		der findes en parameter, der afh\ae nger af to andre.
 
-		Den simpleste m\aa de at afbilde en funktion af to variable er gennem et tre dimmensionelt
+		Den simpleste m\aa de at afbilde en funktion af to variable er gennem et tre dimensionalt
 		koordinatsystem, alts\aa et plan af \emph{x, y} v\ae rdier, og en tredje v\ae rdi, \emph{z},
 		der er produktet af de to andre.
 
 		Der findes dog andre m\aa der at illustrere funktioner af to parametre.
-		For eksempel kan man farve et punk basseret p\aa punktetes v\ae rdi.
+		For eksempel kan man farve et punk basseret p\aa punktets v\ae rdi.
 
 		Herunder ses en funktion af to parametre
 
 		\[y = \cos (x^2) + \sin (z^2)\]
 
-		Denne funktion kan tegnes som en v\ae rdi p\aa \ en vertical akse, baseret p\aa \ et punkt
-		i det horizontale plan.
+		Denne funktion kan tegnes som en v\ae rdi p\aa \ en vertikal akse, baseret p\aa \ et punkt
+		i det horisontale plan.
 		
 		Se Appendix~\ref{appendixB} for funktionen tegnet med \emph{matplotlib} i \emph{python}.
 	\chapter{Minecraft}
-		\emph{Minecraft} er et videospil lavel af \emph{Markus "Notch" Persson}.
+		\emph{Minecraft} er et videospil lavet af \emph{Markus "Notch" Persson}.
 		Spillet er en blanding mellem et eventyr overlevelses spil, og et kreativt spil der g\aa r ud p\aa \ at bygge verdener.
 
 		Spilleren har mulighed for at \o del\ae gge blokke, samle dem op, og placere dem tilbage i verdenen.
-		Man kan m\o de monstre der sl\aa r p\aa \ en, skyder ild kugler og enda eksplodere, all med form\aa l
+		Man kan m\o de monstre der sl\aa r p\aa \ en, skyder ild kugler og endda eksplodere, alle med form\aa l
 		at g\o re det sv\ae rt at overleve.
 
 		I sin kamp mod det onde kan spilleren bygge et sikkert hus, grave efter metaller og smelte disse
 		til jern, guld og diamant brynjer og sv\ae re.
 
 		Spillet har ogs\aa \ et element der heder \emph{redstone}, der til en vis grad fungere som ledninger.
-		\emph{Redstone} kan brugest til at lave kredsl\o b der automatisere skydning af pile, h\ae ldre lava
-		ud over ens fj\ae nder og er enda brugt til at lave \emph{minigames} i \emph{Minecraft}.
+		\emph{Redstone} kan bruges til at lave kredsl\o b der automatisere skydning af pile, h\ae ldre lava
+		ud over ens fj\ae nder og er endda brugt til at lave \emph{minigames} i \emph{Minecraft}.
 
 		\begin{figure}
 			\includegraphics[keepaspectratio = true, scale = 0.2]{screenshot1}
 			\caption{En \emph{Minecraft} verden}
 		\end{figure}
 
-		Indledene bliver spilleren placeret i en stor verden, der best\aa r af 1 \(m^3\) blokke. Disse blokke har forskellige fysiske egenskaber,
+		Indledende bliver spilleren placeret i en stor verden, der best\aa r af 1 \(m^3\) blokke. Disse blokke har forskellige fysiske egenskaber,
 		og bruges i forskellige sammenh\ae nge.
 
-		Derudover genereres blokkene baseret p\aa \ nogle algorytmer, der resultere i et m\o nster der til nogen grad minder
+		Derudover genereres blokkene baseret p\aa \ nogle algoritmer, der resultere i et m\o nster der til nogen grad minder
 		og den virkelige verden. Tr\ae r genereres i n\ae rheden af hinanden, i skove, og ikke midt ude i havene.
-		\O rkner og tundra findes generelt ikke umidelbart i n\ae rheden af hinanden, og floder l\o ber ofte gennem regnskove. 
-	\section{Generering af verdner}
-		Algorytmerne der bruges til at generere verdener i\emph{Minecraft} er en del mere komplicerede end en det simple eksemepel p\aa \ den funktion
-		af to parametre vi har kigget p\aa . Ud over \emph{X} og \emph{Z} koordinated bruger minecraft ogs\aa \ noget som kaldes et seed til at generere
+		\O rkner og tundra findes generelt ikke umiddelbart i n\ae rheden af hinanden, og floder l\o ber ofte gennem regnskove. 
+	\section{Generering af verdener}
+		Algoritmerne der bruges til at generere verdener i \emph{Minecraft} er en del mere komplicerede end en det simple eksempel p\aa \ den funktion
+		af to parametre vi har kigget p\aa . Ud over \emph{X} og \emph{Z} koordinater bruger minecraft ogs\aa \ noget som kaldes et seed til at generere
 		verdener, de genereres alts\aa \ ud fra en mere kompliceret funktion af tre parametre.
 		
 		\begin{wrapfigure}{r}{0.5\textwidth}
@@ -148,8 +148,8 @@ showstringspaces=false
 
 		\[y = \sin (x)\]
 
-		Denne formel vil altid give en sinus kurve, som vi ogs\aa \ ville forvente det, det passer perfect i matematik, men ikke s\aa \ meget
-		hvis vi pr\o ver p\aa \ at lave interesante m\o nstre.
+		Denne formel vil altid give en sinus kurve, som vi ogs\aa \ ville forvente det, det passer perfekt i matematik, men ikke s\aa \ meget
+		hvis vi pr\o ver p\aa \ at lave interessante m\o nstre.
 
 		Forstil dig nu hvis vi \ae ndrede ligningen til at være
 
@@ -161,9 +161,9 @@ showstringspaces=false
 		P\aa \ samme m\aa de bruger \emph{Minecraft} dette \emph{seed} i generations koden til at skabe verdener der er unikke, p\aa \ trods
 		af at de alle er genererede fra den samme kode.
 
-		Ud fra dette seed og generations algorytmerne, bestemmer \emph{Minecraft} hvilken blok der skal placeres p\aa \ hvert punkt
+		Ud fra dette seed og generations algoritmerne, bestemmer \emph{Minecraft} hvilken blok der skal placeres p\aa \ hvert punkt
 		i verdenen.
-	\section{Planlægning}
+	\section{Planl\ae gning}
 		For at implementere vores egen kode i \emph{Minecraft}, og generere en verden baseret ud fra den f\o lgene funktion, er der
 		nogle overvejelser vi f\o rst m\aa \ lave om hvordan dette skal forg\aa .
 
@@ -172,12 +172,12 @@ showstringspaces=false
 		Den f\o rste, og m\aa ske vigtigste, overvejelse jeg har gjort min i forhold til at implementere denne formel i \emph{Minecraft}
 		er hvordan koden skal indkorporeres i spillet.
 
-		Da spillet ikke distribueres som kildekode, er det alts\aa \ ikke muligt bare at skrive koden ind i den orginale kode, og k\o rer spillet.
+		Da spillet ikke distribueres som kildekode, er det alts\aa \ ikke muligt bare at skrive koden ind i den originale kode, og k\o rer spillet.
 		Heldigvis findes der en uofficiel API til \emph{Minecraft}, der g\o r det muligt at skrive noget kode som en separat file, som bliver k\o rt
 		n\aa r \emph{Minecraft} g\o r det, denne API kaldes \emph{Minecraft Forge}.
 
 		\subsection{Forge}
-		\emph{Minecraft Forge} eller bare \emph{Forge} fugere p\aa \ den m\aa de at programmet som i sig selv \ae ndre p\aa \ noget af
+		\emph{Minecraft Forge} eller bare \emph{Forge} fungere p\aa \ den m\aa de at programmet som i sig selv \ae ndre p\aa \ noget af
 		kilde koden til \emph{Minecraft}, de \ae ndringer \aa bner op for at andre filer, kendt som \emph{mods}, kan \ae ndre p\aa
 		v\ae rdier i spillet, uden direkte at skulle \ae ndre p\aa \ koden. Dette er is\ae r vigtigt da to mods der ville pr\o ve at overskrive
 		to forskellige ting i den samme fil, ellers ville overskrive hinandens \ae ndringer, som ville resultere i at kun et mod der havde noget
@@ -190,16 +190,16 @@ showstringspaces=false
 		Vores funktion kr\ae ver en del tilpasninger for at blive illustreret vel i dette koordinatsystem.
 
 		Den f\o rste \ae ndring der skal g\o res ved funktinen er at bytte om p\aa \ nogle akser,
-		da coordinat systemet i \emph{Minecraft} bryger \emph{Y} aksen som h\o jde, i stedet for \emph{Z} aksen som bruges
-		i vores ligning. Den nye funktio ser alts\aa \ s\aa \ ledes ud
+		da koordinat systemet i \emph{Minecraft} bruger \emph{Y} aksen som h\o jde, i stedet for \emph{Z} aksen som bruges
+		i vores ligning. Den nye funktion ser alts\aa \ s\aa \ ledes ud
 
 		\[y = \cos (x^2) + \sin (z^2)\]
 
-		Denne funtion bruger \emph{XZ} planet som baggrund for at regne højden \emph{Y} ud,
+		Denne funktion bruger \emph{XZ} planet som baggrund for at regne højden \emph{Y} ud,
 		p\aa \ samme m\aa de som \emph{Minecraft} g\o r det.
 
 		Det n\ae ste problem ved formlen der takles er at sinus og cosinus funktionerne b\ae gge giver et tal mellem -1 og 1.
-		Alts\aa \ vil formlen give et resutat mellem -2 og 2 afh\ae ngligt at inputtet, vi kan kun generere blokke mellem
+		Alts\aa \ vil formlen give et resultat mellem -2 og 2 afh\ae ngligt at inputtet, vi kan kun generere blokke mellem
 		0 og 256.
 
 		Hvad jeg har valgt at g\o re ved detter at l\ae gge 64 til det endelige resultat af funktionen, hvilket g\o r at resultatet
@@ -208,10 +208,10 @@ showstringspaces=false
 		\[y = (\cos (x^2) + \sin (z^2)) + 64\]
 
 		Den n\ae ste problemstilling der skal \ae ndres p\aa \ er at resultatet af vores funktion kun variere med 4, p\aa \
-		trods af at det er helt accepablet, fungere det ikke helt godt for \emph{Minecraft}, da vi normalt vil have at vores verden
-		variere mere end kun 4 blokke op og ned, det giver et meget flat landskab.
+		trods af at det er helt acceptabelt, fungere det ikke helt godt for \emph{Minecraft}, da vi normalt vil have at vores verden
+		variere mere end kun 4 blokke op og ned, det giver et meget fladt landskab.
 
-		Derfor ganger vi resutatet af sinus og cosinus funktinerne med 32, som giver en variation af 128 blokke (32 * 2 op og 32 * 2 ned).
+		Derfor ganger vi resultatet af sinus og cosinus funktionerne med 32, som giver en variation af 128 blokke (32 * 2 op og 32 * 2 ned).
 		Koblet med \ae ndringen om at flytte hele kurven 64 blokke op, betyder det at kurven nu kan g\aa \ fra 0 til 128 i \emph{Y} aksen.
 
 		\[y = ((\cos (x^2) + \sin (z^2)) * 32) + 64\]
@@ -404,7 +404,7 @@ public class SRPWorldGenerator implements IWorldGenerator {
 			plottet med \emph{python} og \emph{matplotlib}
 	\section{Vurdering}
 		P\aa \ bagrund af mit arbejde med implementationen af denne funktion af to variabler, vil jeg vurdere
-		at det er en god start, til m\aa der at generere verdner p\aa \ , men i sig selv er en funktion med to parametre ikke nok.
+		at det er en god start, til m\aa der at generere verdener p\aa \ , men i sig selv er en funktion med to parametre ikke nok.
 
 		Som tidligere beskrevet, er en funktion med tre eller flere parametre n\o dvendig, i det mindste for at g\o re spillet interesant.
 		En funktion med kun to parametre \emph{X, Z} vil altid generere p\aa \ den samme m\aa de, hvilket g\o r landskabet
@@ -413,7 +413,7 @@ public class SRPWorldGenerator implements IWorldGenerator {
 		Det ville v\ae re problematisks hvis spilleren kunne udregne hvor i jorden diamnter vil findes, og hvor skatte kan findes, ud fra
 		koordinaterne p\aa \ et punkt alene.
 	\chapter{Perspektivering}
-		Basering af hele verdner p\aa \ bagrund af en relativt simpel ligning af denne art er for simplet, men
+		Basering af hele verdener p\aa \ bagrund af en relativt simpel ligning af denne art er for simplet, men
 		der er god mulighed for brug af ligner af denne art i \emph{Minecraft} alligevel.
 
 		Mindre genererede strukture, som huse, s\o er, farme og lignende kan sagtens genereres p\aa \ baggrund af
