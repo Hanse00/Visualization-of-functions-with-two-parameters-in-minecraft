@@ -22,7 +22,7 @@
 		\includegraphics[keepaspectratio = true, scale = 0.2]{screenshot1}
 		\vspace{5 mm}
 
-		Indledene bliver spilleren placeret i en stor verden, der best\aa r af 1 $m^3$ blokke. Disse blokke har forskellige fysiske egenskaber,
+		Indledene bliver spilleren placeret i en stor verden, der best\aa r af 1 \(m^3\) blokke. Disse blokke har forskellige fysiske egenskaber,
 		og bruges i forskellige sammenh\ae nge.
 
 		Derudover genereres blokkene baseret p\aa \ nogle algorytmer, der resultere i et m\o nster der til nogen grad minder
@@ -30,7 +30,7 @@
 		\O rkner og tundra findes generelt ikke umidelbart i n\ae rheden af hinanden, og floder l\o ber ofte gennem regnskove. 
 	\subsection{Generering af verdner}
 		Algorytmerne der bruges til at generere verdener i Minecraft er en del mere komplicerede end en det simple eksemepel p\aa \ den funktion
-		af to parametre vi har kigget p\aa . Ud over $X$ og $Z$ koordinated bruger minecraft også noget som kaldes et seed til at generere
+		af to parametre vi har kigget p\aa . Ud over \emph{X} og \emph{Z} koordinated bruger minecraft også noget som kaldes et seed til at generere
 		verdener, de genereres alts\aa \ ud fra en mere kompliceret funktion af tre parametre.
 		
 		\begin{wrapfigure}{r}{0.5\textwidth}
@@ -39,7 +39,25 @@
 		\end{wrapfigure}
 
 		Et seed er en tekst streng som brugeren kan give Minecraft n\aa r en ny verden genereres, hvis brugeren ikke giver denne streng
-		bliver den automatisk genereret f\o r verdenen laves.
+		bliver den automatisk genereret f\o r verdenen laves. Funktionen af et seed er at selv med den samme verden genererings kode,
+		kan vidt forskellige verdener laves.
+
+		Forstil dig for eksempel dette scenarie, vi bruger den f\o lgene formel til at generere en kurve
+
+		\[y = \sin (x)\]
+
+		Denne formel vil altid give en sinus kurve, som vi ogs\aa \ ville forvente det, det passer perfect i matematik, men ikke s\aa \ meget
+		hvis vi pr\o ver p\aa \ at lave interesante m\o nstre.
+
+		Forstil dig nu hvis vi \ae ndrede ligningen til at være
+
+		\[y = \sin (seed * x)\]
+
+		S\aa \ l\ae nge \emph{seed} ikke er lig nul, vil denne formel stadig give en sinus kurve, men afh\ae ngligt at hvad vi s\ae tter \emph{seed]}
+		til at v\ae re, vil perioden for vores kurve v\ae re forskellig.
+
+		P\aa \ samme m\aa de bruger \emph{Minecraft} dette \emph{seed} i generations koden til at skabe verdener der er unikke, p\aa \ trods
+		af at de alle er genererede fra den samme kode.
 	\subsection{Planlægning}
 	\subsection{Implementering}
 	\subsection{Vurdering}
