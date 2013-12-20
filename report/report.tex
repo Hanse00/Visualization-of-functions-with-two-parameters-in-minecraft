@@ -15,12 +15,13 @@
 	\section{Funktioner af to variable}
 	\subsection{Afbildning af funktioner af to variable}
 	\section{Minecraft}
-		Minecraft er et videospil lavel af Markus "Notch" Persson.
+		\emph{Minecraft} er et videospil lavel af \emph{Markus "Notch" Persson}.
 		Spillet er en blanding mellem et eventyr overlevelses spil, og et kreativt spil der g\aa r ud p\aa \ at bygge verdener.
 
-		\vspace{5 mm}
-		\includegraphics[keepaspectratio = true, scale = 0.2]{screenshot1}
-		\vspace{5 mm}
+		\begin{figure}
+			\includegraphics[keepaspectratio = true, scale = 0.2]{screenshot1}
+			\caption{En \emph{Minecraft} verden}
+		\end{figure}
 
 		Indledene bliver spilleren placeret i en stor verden, der best\aa r af 1 \(m^3\) blokke. Disse blokke har forskellige fysiske egenskaber,
 		og bruges i forskellige sammenh\ae nge.
@@ -29,16 +30,16 @@
 		og den virkelige verden. Tr\ae r genereres i n\ae rheden af hinanden, i skove, og ikke midt ude i havene.
 		\O rkner og tundra findes generelt ikke umidelbart i n\ae rheden af hinanden, og floder l\o ber ofte gennem regnskove. 
 	\subsection{Generering af verdner}
-		Algorytmerne der bruges til at generere verdener i Minecraft er en del mere komplicerede end en det simple eksemepel p\aa \ den funktion
+		Algorytmerne der bruges til at generere verdener i\emph{ Minecraft]} er en del mere komplicerede end en det simple eksemepel p\aa \ den funktion
 		af to parametre vi har kigget p\aa . Ud over \emph{X} og \emph{Z} koordinated bruger minecraft også noget som kaldes et seed til at generere
 		verdener, de genereres alts\aa \ ud fra en mere kompliceret funktion af tre parametre.
 		
 		\begin{wrapfigure}{r}{0.5\textwidth}
 			\includegraphics[keepaspectratio = true, width = 0.5\textwidth]{screenshot2}
-			\caption{Minecraft verden genererings sk\ae rm}
+			\caption{\emph{Minecraft} verden genererings sk\ae rm}
 		\end{wrapfigure}
 
-		Et seed er en tekst streng som brugeren kan give Minecraft n\aa r en ny verden genereres, hvis brugeren ikke giver denne streng
+		Et \emph{seed} er en tekst streng som brugeren kan give \emph{Minecraft} n\aa r en ny verden genereres, hvis brugeren ikke giver denne streng
 		bliver den automatisk genereret f\o r verdenen laves. Funktionen af et seed er at selv med den samme verden genererings kode,
 		kan vidt forskellige verdener laves.
 
@@ -53,7 +54,7 @@
 
 		\[y = \sin (seed * x)\]
 
-		S\aa \ l\ae nge \emph{seed} ikke er lig nul, vil denne formel stadig give en sinus kurve, men afh\ae ngligt at hvad vi s\ae tter \emph{seed]}
+		S\aa \ l\ae nge \emph{seed} ikke er lig nul, vil denne formel stadig give en sinus kurve, men afh\ae ngligt at hvad vi s\ae tter \emph{seed}
 		til at v\ae re, vil perioden for vores kurve v\ae re forskellig.
 
 		P\aa \ samme m\aa de bruger \emph{Minecraft} dette \emph{seed} i generations koden til at skabe verdener der er unikke, p\aa \ trods
