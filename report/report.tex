@@ -232,6 +232,20 @@ public class SRPWorldGenerator implements IWorldGenerator {
 }
 \end{lstlisting}
 
+			Da funktionen \emph{generate} kaldes med \emph{X, Y} v\ae rdien af den chunk der genereres, kan
+			denne ganges med 16 (da enhver chunk er \(16 * 16\) blokke, dette giver hj\o rnet p\aa \ den givne chunk.
+			Ved derefter at ligge et random tal mellem 0 og 16 til, f\aa r vi en blok med \emph{Y} koordinated 100, og et random \emph{X, Y}
+			koordinat i hver chunk.
+
+			\begin{wrapfigure}{r}{0.5\textwidth}
+				\includegraphics[keepaspectratio = true, width = 0.5\textwidth]{screenshot4}
+				\caption{F\o rste generations eksperiment}
+			\end{wrapfigure}
+
+			Med et stabilt grundlag for at generere blokke, forts\ae tter vi mod at generere den forskrevne funktion.
+
+		\subsubsection{Iteration 3}
+			
 	\subsection{Vurdering}
 	\section{Perspektivering}
 \end{document}
