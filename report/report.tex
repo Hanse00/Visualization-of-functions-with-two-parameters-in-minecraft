@@ -264,6 +264,47 @@ for (int i = 1; i <= 16; i++) {
 				\includegraphics[keepaspectratio = true, width = 0.5\textwidth]{screenshot5}
 				\caption{Solid tr\ae \ verden}
 			\end{wrapfigure}
+
+		\subsubsection{Iteration 4}
+			Efter at have implementeret l\o kker i generationskoden, er det n\ae ste trin at lave en mere variable overflade,
+			til det form\aa l har jeg valgt at generere en cosinus kurve langs \emph{X} aksen, der kun bruger den ene parameter.
+
+			Dette burde give en stor \emph{b\o lge}, da kurven ikke \ae ndre sig langs \emph{Z} aksen.
+
+\begin{lstlisting}[label=SRPWorldGenerator2,caption=SRPWorldGenerator.java]
+for (int i = 1; i <= 16; i++) {
+    for (int j = 1; j <= 16; j++) {
+        int coordinateX = chunkX*16 + i;
+        int coordinateZ = chunkZ*16 + j;
+        int coordinateY = (int)Math.round((Math.cos(coordinateX)) * 32) + 64;
+        world.setBlock(coordinateX, coordinateY, coordinateZ, 5);
+    }
+}
+\end{lstlisting}
+	
+			L\o sningen fungere i teorien, men ved definitionen af min formel glemte jeg en vigtig detailje, sinus og cosinus funkioner har
+			en b\o lgel\ae ngde af \(2 * \pi \), det vil sige at min cosinus funktion g\aa r fra et \emph{Y} koordinat på 96 til 32 p\aa \ \(1 * \pi \),
+			eller lige over 3 blokke over \emph{X} akesen. Dette resultere i noget der ikke s\aa \ meget ligner en kurve, som en par punkter underligt
+			forskudt.
+
+			\begin{wrapfigure}{r}{0.5\textwidth}
+				\includegraphics[keepaspectratio = true, width = 0.5\textwidth]{screenshot6}
+				\caption{Cosinus "b\o lge"}
+			\end{wrapfigure}
+
+		\subsubsection{Iteration 5}
+			For at komme frem til noget der ligner en rent faktisk b\o lge m\aa \ vi alts\aa \ give funktionen en periode der er lidt st\o rrer
+			end \(2 * \pi \), dette gøres ved at gange \emph{X} koordinated med en konstant der g\o r det mindre, f\o r det bliver fodret
+			ind i funktionen.
+
+			En konstant som 0.05 giver en periode p\aa \ \( \pi \over 0.05\) eller 125 blokke, som giver noget der syneligt
+			minder om en kurve.
+
+			\begin{wrapfigure}{r}{0.5\textwidth}
+				\includegraphics[keepaspectratio = true, width = 0.5\textwidth]{screenshot7}
+				\caption{Synlig cosinus kurve}
+			\end{wrapfigure}
+
 	\subsection{Vurdering}
 	\section{Perspektivering}
 \end{document}
